@@ -12,7 +12,7 @@ public class ExtLib {
     public BigInteger eval(BigInteger a, int p) {
         try {
             // Do some tough work
-            Thread.sleep(ThreadLocalRandom.current().nextInt(500, 5500));
+            Thread.sleep(20 * a.longValue());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
