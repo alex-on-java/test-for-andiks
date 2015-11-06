@@ -44,9 +44,14 @@ public class EvaluatorTest extends TestCase {
         };
         int exp = 10;
 
+        ArrayEvaluationFactory factory = new ArrayEvaluationFactory();
+        factory.setExtLib(new ExtLib()); // better to use Mock, but test task is not about this
         Evaluator evaluator = new Evaluator();
-        evaluator.setExtLib(new ExtLib()); // better to use Mock, but test task is not about this
+        evaluator.setFactory(factory);
         BigInteger[] result = evaluator.evaluate(source, exp);
+        assertArrayEquals(expected, result);
+        // best practice is to make setUp method and  divide into to separate tests for each method
+        result = evaluator.evaluateBySplit(source, exp);
         assertArrayEquals(expected, result);
     }
 }
